@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coffee Delivery</title>
+
+    <script src="Coffee.js"></script>
+
+    <link rel="stylesheet" href="Coffee.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <nav class="navbar">
+            
+            <h2 class="logo">CoffeeExpress</h2>
+
+            <button class="menu-btn">☰</button>
+
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li>
+                    🛒 <span id="cart-count">0</span>
+                    
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero -->
+    <section id="home" class="hero">
+        <h1>Premium Coffee Delivered to Your Door</h1>
+        <p>Experience the finest artisan coffee from around the world. Freshly roasted, expertly brewed, and delivered within 30 minutes.</p>
+
+        <a href="#menu" class="order-now">Order Now</a>
+    </section>
+
+
+
+    <!-- Search -->
+    <section class="search-box">
+        <input
+            type="text"
+            id="search"
+            placeholder="Search coffee..."
+        >
+    </section>
+
+
+     
+
+    <!-- Menu -->
+    <section id="menu">
+
+        <h2>Popular Coffee</h2>
+
+        <div id="divCoffeeContainer" class="coffee-container">
+
+            <div class="coffee-card">
+                <img src="https://tse4.mm.bing.net/th/id/OIP.J78FqhAsczo1wOPemISNAgHaEJ?r=0&pid=Api&P=0&h=180" alt="Espresso">
+                <h3>Espresso</h3>
+                <p>A concentrated, bold shot of pure black coffee.</p>
+                <p>₹180</p>
+                <button class="add-cart">Add to Cart</button>
+            </div>
+
+            <div class="coffee-card">
+                <img src="https://tse2.mm.bing.net/th/id/OIP.vKO__-thMjsj5FaDPhs-tAHaEK?r=0&pid=Api&P=0&h=180" alt="Latte">
+                <h3>Latte</h3>
+                <p>A smooth espresso with plenty of creamy steamed milk and light foam.</p>
+                <p>₹240</p>
+                <button class="add-cart">Add to Cart</button>
+            </div>
+
+            <div class="coffee-card">
+                <img src="https://tse3.mm.bing.net/th/id/OIP.HEdsSCgGNRc6gqVO0u04eAHaFf?r=0&pid=Api&P=0&h=180" alt="Cappuccino">
+                <h3>Cappuccino</h3>
+                <p>An even blend of rich espresso, steamed milk, and a thick layer of airy milk foam.</p>
+                <p>₹220</p>
+                <button class="add-cart">Add to Cart</button>
+            </div>
+
+            <div class="coffee-card">
+                <img src="https://tse1.mm.bing.net/th/id/OIP.fHeOxzLqY5YgCTiE-yXowAHaFj?r=0&pid=Api&P=0&h=180" alt="Cold Brew">
+                <h3>Cold Brew</h3>
+                <p>Coffee beans steeped in cold water for hours for a naturally smooth, less-acidic iced coffee.</p>
+                <p>₹250</p>
+                <button class="add-cart">Add to Cart</button>
+            </div>
+
+            <div class="coffee-card">
+                <img src="https://tse4.mm.bing.net/th/id/OIP.znjH-qg-sZSxDtPDUcecQwHaEO?r=0&pid=Api&P=0&h=180" alt="Iced Latte">
+                <h3>Iced Latte</h3>
+                <p>A refreshing blend of bold espresso and cold milk served over ice.</p>
+                <p>₹260</p>
+                <button class="add-cart">Add to Cart</button>
+            </div>
+
+            <div class="coffee-card">
+                <img src="https://tse4.mm.bing.net/th/id/OIP.q6HjqqLOCxq7S9cGwag1WwHaE8?r=0&pid=Api&P=0&h=180" alt="Iced Americano">
+                <h3>Iced Americano</h3>
+                <p>A crisp, cooling drink made of espresso shots poured over ice and cold water.</p>
+                <p>₹210</p>
+                <button class="add-cart">Add to Cart</button>
+            </div>
+
+            <div class="coffee-card">
+                <img src="https://tse1.mm.bing.net/th/id/OIP.BSP4bZJ0kWXLzrBgU_L0IQHaE8?r=0&pid=Api&P=0&h=180" alt="Americano">
+                <h3>Americano</h3>
+                <p>A robust black coffee made by diluting a fresh espresso shot with hot water.</p>
+                <p>₹190</p>
+                <button class="add-cart">Add to Cart</button>
+            </div>
+
+            <div class="coffee-card">
+                <img src="https://tse4.mm.bing.net/th/id/OIP.r_lfBkBOxYcid-JUbiOqXwHaEO?r=0&pid=Api&P=0&h=180" alt="caramel macchiato">
+                <h3>caramel macchiato</h3>
+                <p>A creamy blend of vanilla syrup and steamed milk marked with espresso and topped with caramel drizzle.</p>
+                <p>₹280</p>
+                <button class="add-cart">Add to Cart</button>
+            </div>
+
+            <div class="coffee-card">
+                <img src="https://tse2.mm.bing.net/th/id/OIP.PEa4ASr8X5JWfqv-p3TqigHaEI?r=0&pid=Api&P=0&h=180" alt="Mocha">
+                <h3>Mocha</h3>
+                <p>A sweet mix of espresso, rich chocolate syrup, and warm steamed milk.</p>
+                <p>₹280</p>
+                <button class="add-cart">Add to Cart</button>
+            </div>
+
+            <div class="coffee-card">
+                <img src="https://tse3.mm.bing.net/th/id/OIP.V5UalDKUhTbwf9E2TkUyGQHaEO?r=0&pid=Api&P=0&h=180" alt="Ristretto">
+                <h3>Ristretto</h3>
+                <p>A short, highly concentrated espresso shot pulled with less water for a sweeter, richer flavor.</p>
+                <p>₹170</p>
+                <button class="add-cart">Add to Cart</button>
+            </div>
+
+            <div class="coffee-card">
+                <img src="https://tse1.mm.bing.net/th/id/OIP.06xrt2u-Ezoalc9KrHEkrgHaEO?r=0&pid=Api&P=0&h=180" alt="Cortado">
+                <h3>Cortado</h3>
+                <p>Equal parts robust espresso and warm, gently steamed milk to cut the acidity.</p>
+                <p>₹210</p>
+                <button class="add-cart">Add to Cart</button>
+            </div>
+
+            <div class="coffee-card">
+                <img src="https://tse1.mm.bing.net/th/id/OIP.gK3OAs7XOTz6BO3Vr9cZgQHaFE?r=0&pid=Api&P=0&h=180" alt="Lungo">
+                <h3>Lungo</h3>
+                <p>An espresso shot pulled with twice as much water, resulting in a larger, milder black coffee.</p>
+                <p>₹200</p>
+                <button class="add-cart">Add to Cart</button>
+            </div>
+
+            <div class="coffee-card">
+                <img src="https://tse1.mm.bing.net/th/id/OIP.Cs47TLrxyHTeUKeCLjpF2AHaE8?r=0&pid=Api&P=0&h=180" alt="Flat White">
+                <h3>Flat White</h3>
+                <p>A double shot of strong espresso blended with velvety, smooth micro-foamed milk.</p>
+                <p>₹260</p>
+                <button class="add-cart">Add to Cart</button>
+            </div>
+
+            <div class="coffee-card">
+                <img src="https://tse3.mm.bing.net/th/id/OIP.FjyXj0M6ahRvIi5R5A0QNgHaEJ?r=0&pid=Api&P=0&h=180" alt="Frappe">
+                <h3>Frappe</h3>
+                <p>A rich, creamy blended mix of coffee, milk, ice, and vanilla ice cream.</p>
+                <p>₹290</p>
+                <button class="add-cart">Add to Cart</button>
+            </div>
+
+            <div class="coffee-card">
+                <img src="https://tse2.mm.bing.net/th/id/OIP.4fYUdFM_x6wZYF6WozmsRwHaFE?r=0&pid=Api&P=0&h=180" alt="Premium Coffee Beans">
+                <h3>Premium Coffee Beans</h3>
+                <p>Freshly roasted premium arabica beans - 250g</p>
+                <p>₹650</p>
+                <button class="add-cart">Add to Cart</button>
+            </div>
+
+            <div class="coffee-card">
+                <img src="https://tse3.mm.bing.net/th/id/OIP._tI_97POhYufYjulxrkShwHaEK?r=0&pid=Api&P=0&h=180" alt="South Indian Filter Coffee">
+                <h3>South Indian Filter Coffee</h3>
+                <p>Traditional chicory-infused coffee brew frothed up with boiling milk and sugar.</p>
+                <p>₹120</p>
+                <button class="add-cart">Add to Cart</button>
+            </div>
+
+            <div class="coffee-card">
+                <img src="https://tse2.mm.bing.net/th/id/OIP.4f5ZiDHKn0whiJZ-6o53WAHaE8?r=0&pid=Api&P=0&h=180" alt="Jaggery Latte (Gur Latte)">
+                <h3>Jaggery Latte (Gur Latte)</h3>
+                <p>A comforting espresso latte sweetened naturally with organic palm jaggery.</p>
+                <p>₹270</p>
+                <button class="add-cart">Add to Cart</button>
+            </div>
+
+            <div class="coffee-card">
+                <img src="https://imgeng.jagran.com/images/2025/07/22/template/image/Karak-Chai-or-Masala-Chai-1753170326341.jpg" alt="Masala Chai">
+                <h3>Masala Chai</h3>
+                <p>A fragrant, spiced black tea brewed with milk, water, sugar, and fresh aromatic herbs like ginger and cardamom.</p>
+                <p>₹90</p>
+                <button class="add-cart">Add to Cart</button>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- About -->
+    <section id="about">
+
+        <h2>About Us</h2>
+
+        <p>
+            We deliver freshly brewed coffee made with premium beans,
+            ensuring quality and taste in every cup.
+        </p>
+
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+
+        <h2>Contact Us</h2>
+
+        <form id="contactForm">
+
+            <input
+                type="text"
+                id="name"
+                placeholder="Your Name"
+                required
+            >
+
+            <input
+                type="email"
+                id="email"
+                placeholder="Email"
+                required
+            >
+
+            <textarea
+                id="message"
+                placeholder="Your Message"
+                required
+            ></textarea>
+
+            <button type="submit">
+                Send Message
+            </button>
+
+        </form>
+
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 CoffeeExpress. All Rights Reserved.</p>
+    </footer>
+
+    
+    <a href="cart.html" class="floating-cart">
+    <i class="fa-solid fa-cart-shopping"></i>
+</a>
+
+</body>
+</html>
