@@ -26,8 +26,9 @@
                 <li><a href="#about">About</a></li>
                 <li><a href="#contact">Contact</a></li>
                 <li>
-                    🛒 <span id="cart-count">0</span>
-                    
+                    <button type="button" class="header-cart-btn open-cart">
+                        🛒 <span id="cart-count">0</span>
+                    </button>
                 </li>
             </ul>
         </nav>
@@ -262,10 +263,42 @@
         <p>&copy; 2026 CoffeeExpress. All Rights Reserved.</p>
     </footer>
 
-    
-    <a href="cart.html" class="floating-cart">
-    <i class="fa-solid fa-cart-shopping"></i>
-</a>
+    <div id="overlay"></div>
+
+    <aside id="cartSidebar">
+        <div class="cart-header">
+            <div class="cart-header-title">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span>Your Cart (<span id="cart-sidebar-count">0</span>)</span>
+            </div>
+            <button type="button" id="closeCart" aria-label="Close cart">×</button>
+        </div>
+
+        <div id="cartContent">
+            <div id="cartItems"></div>
+        </div>
+
+        <div class="cart-footer">
+            <div class="summary-row">
+                <span>Subtotal</span>
+                <span id="cartSubtotal">₹0</span>
+            </div>
+            <div class="summary-row">
+                <span>Delivery fee</span>
+                <span id="cartDelivery">₹50</span>
+            </div>
+            <div class="summary-row total-row">
+                <span>Total</span>
+                <strong id="cartTotal">₹0</strong>
+            </div>
+            <button type="button">Checkout</button>
+        </div>
+    </aside>
+
+    <a href="#" class="floating-cart open-cart" id="cartBtn">
+        <i class="fa-solid fa-cart-shopping"></i>
+        <span class="floating-cart-badge" id="floatingCartCount">0</span>
+    </a>
 
 </body>
 </html>
