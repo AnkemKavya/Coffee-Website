@@ -12,6 +12,7 @@ function updateCartDisplay() {
     const cartSubtotal = document.getElementById("cartSubtotal");
     const cartDelivery = document.getElementById("cartDelivery");
     const cartTotal = document.getElementById("cartTotal");
+    const cartFooter = document.querySelector(".cart-footer");
 
     cartCount = cartItems.reduce((sum, item) => sum + Number(item.quantity || 1), 0);
 
@@ -29,8 +30,16 @@ function updateCartDisplay() {
 
     if (cartItemsContainer) {
         if (cartItems.length === 0) {
-            cartItemsContainer.innerHTML = '<div class="cart-empty">Your cart is empty.</div>';
+            cartItemsContainer.classList.add("empty");
+            cartItemsContainer.innerHTML = `
+                <div id="emptyCart">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <p class="empty-cart-title">Your cart is empty</p>
+                    <p class="empty-cart-text">Add some delicious Coffee to get started!</p>
+                </div>
+            `;
         } else {
+            cartItemsContainer.classList.remove("empty");
             cartItemsContainer.innerHTML = cartItems.map(item => `
                 <div class="cart-item">
                     <div class="cart-item-image">
@@ -49,6 +58,10 @@ function updateCartDisplay() {
                 </div>
             `).join("");
         }
+    }
+
+    if (cartFooter) {
+        cartFooter.style.display = cartItems.length === 0 ? "none" : "block";
     }
 
     const subtotal = cartItems.reduce((sum, item) => sum + Number(item.price) * (item.quantity || 1), 0);
@@ -166,13 +179,25 @@ document.addEventListener("DOMContentLoaded", () => {
     const closeCart = document.getElementById("closeCart");
     const sidebar = document.getElementById("cartSidebar");
     const overlay = document.getElementById("overlay");
+    const floatingCart = document.querySelector(".floating-cart");
+
+    const openCartSidebar = () => {
+        if (sidebar) sidebar.classList.add("open");
+        if (overlay) overlay.classList.add("show");
+        if (floatingCart) floatingCart.classList.add("hidden");
+    };
+
+    const closeCartSidebar = () => {
+        if (sidebar) sidebar.classList.remove("open");
+        if (overlay) overlay.classList.remove("show");
+        if (floatingCart) floatingCart.classList.remove("hidden");
+    };
 
     // Open Sidebar
     cartBtns.forEach((btn) => {
         btn.addEventListener("click", (event) => {
             event.preventDefault();
-            if (sidebar) sidebar.classList.add("open");
-            if (overlay) overlay.classList.add("show");
+            openCartSidebar();
         });
     });
 
@@ -209,16 +234,14 @@ document.addEventListener("DOMContentLoaded", () => {
     // Close Sidebar
     if (closeCart) {
         closeCart.addEventListener("click", () => {
-            if (sidebar) sidebar.classList.remove("open");
-            if (overlay) overlay.classList.remove("show");
+            closeCartSidebar();
         });
     }
 
     // Close when clicking outside
     if (overlay) {
         overlay.addEventListener("click", () => {
-            if (sidebar) sidebar.classList.remove("open");
-            overlay.classList.remove("show");
+            closeCartSidebar();
         });
     }
 
