@@ -89,6 +89,7 @@ function onClickToSave() {
     product.name = document.getElementById("txtName").value;
     product.description = document.getElementById("txtDescription").value;
     product.price = document.getElementById("txtPrice").value;
+    product.category = document.getElementById("txtCategory").value;
 
     products.push(product);
     localStorage.setItem("ls_products", JSON.stringify(products));
@@ -98,6 +99,7 @@ function onClickToSave() {
     document.getElementById("txtName").value = "";
     document.getElementById("txtDescription").value = "";
     document.getElementById("txtPrice").value = "";
+    document.getElementById("txtCategory").value = "hot";
 }
 
 function bindProduct(prods = []) {
@@ -108,7 +110,8 @@ function bindProduct(prods = []) {
     if (prods.length > 0) {
         let content = "";
         for (let i = 0; i < prods.length; i++) {
-            content += ` <div class="coffee-card">
+                const category = String(prods[i].category || "").toLowerCase();
+                content += ` <div class="coffee-card" data-category="${category}">
                 <img src="${prods[i].url}" alt="${prods[i].name}">
                 <h3>${prods[i].name}</h3>
                 <p>${prods[i].description}</p>
@@ -117,7 +120,7 @@ function bindProduct(prods = []) {
             </div>`;
         }
 
-        container.innerHTML = content;
+        container.insertAdjacentHTML("beforeend", content);
     }
 }
 
@@ -125,6 +128,34 @@ document.addEventListener("DOMContentLoaded", () => {
     products = JSON.parse(localStorage.getItem("ls_products")) || [];
     bindProduct(products);
     updateCartDisplay();
+
+    let selectedCategory = "all";
+
+    const applyFilters = () => {
+        const searchValue = document.querySelector("#search")?.value.toLowerCase().trim() || "";
+
+        document.querySelectorAll(".coffee-card").forEach(card => {
+            const title = card.querySelector("h3")?.textContent.toLowerCase() || "";
+            const matchesCategory = selectedCategory === "all" || card.dataset.category === selectedCategory;
+            const matchesSearch = title.includes(searchValue);
+
+            card.style.display = matchesCategory && matchesSearch ? "block" : "none";
+        });
+    };
+
+    document.querySelectorAll(".category-tab").forEach(tab => {
+        tab.addEventListener("click", () => {
+            selectedCategory = tab.dataset.category;
+
+            document.querySelectorAll(".category-tab").forEach(categoryTab => {
+                const isActive = categoryTab === tab;
+                categoryTab.classList.toggle("active", isActive);
+                categoryTab.setAttribute("aria-pressed", String(isActive));
+            });
+
+            applyFilters();
+        });
+    });
 
     // Mobile Menu Toggle
     const menuBtn = document.querySelector(".menu-btn");
@@ -249,17 +280,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const searchInput = document.querySelector("#search");
 
     if (searchInput) {
-        searchInput.addEventListener("keyup", function () {
-            const value = this.value.toLowerCase();
-
-            document.querySelectorAll(".coffee-card").forEach(card => {
-                const title = card.querySelector("h3").textContent.toLowerCase();
-
-                card.style.display = title.includes(value)
-                    ? "block"
-                    : "none";
-            });
-        });
+        searchInput.addEventListener("input", applyFilters);
     }
 
     // Contact Form Validation
