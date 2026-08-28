@@ -18,6 +18,46 @@ body{
     color:#333;
 }
 
+.category-tabs{
+    display:flex;
+    max-width:650px;
+    margin:30px auto 45px;
+    padding:5px;
+    background:#e9e7eb;
+    border-radius:28px;
+    gap:4px;
+}
+
+.category-tab{
+    flex:1;
+    border:0;
+    border-radius:23px;
+    padding:12px 20px;
+    background:transparent;
+    color:#4b2e2e;
+    font:600 16px 'Poppins',sans-serif;
+    cursor:pointer;
+    transition:background .2s, color .2s, box-shadow .2s;
+}
+
+.category-tab:hover,
+.category-tab.active{
+    background:#fff;
+    color:#d97706;
+    box-shadow:0 2px 8px rgba(75,46,46,.12);
+}
+
+@media (max-width:600px){
+    .category-tabs{
+        margin:25px 16px 35px;
+    }
+
+    .category-tab{
+        padding:10px 8px;
+        font-size:14px;
+    }
+}
+
 /* Header */
 header{
     background:#4b2e2e;
@@ -595,7 +635,30 @@ header{
 /* Menu */
 
 #menu{
-    padding:70px 8%;
+    padding:70px 8% 90px;
+    text-align:center;
+}
+
+.menu-label{
+    display:inline-block;
+    padding:5px 13px;
+    border-radius:12px;
+    background:#fff0bf;
+    color:#9a4f0b;
+    font-weight:600;
+}
+
+#menu .menu-label + h2{
+    margin:25px 0 25px;
+    color:#8d470b;
+}
+
+.menu-intro{
+    margin:0 auto;
+    max-width:950px;
+    color:#a65312;
+    font-size:20px;
+    line-height:1.7;
 }
 
 #menu h2{
