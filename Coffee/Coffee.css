@@ -158,6 +158,51 @@ header{
     background:#b77b33;
 }
 
+/* Service Features */
+
+.service-features{
+    display:grid;
+    grid-template-columns:repeat(4,minmax(0,1fr));
+    gap:24px;
+    padding:72px max(24px,8%);
+    background:#fff9ed;
+}
+
+.feature-card{
+    min-height:220px;
+    padding:24px 14px 20px;
+    border:1px solid #f8e3aa;
+    border-radius:18px;
+    background:#fff;
+    text-align:center;
+}
+
+.feature-icon{
+    width:58px;
+    height:58px;
+    margin:0 auto 16px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:50%;
+    background:#4b2e2e;
+    color:#fff;
+    font-size:24px;
+}
+
+.feature-card h2{
+    margin-bottom:9px;
+    color:#000;
+    font-size:19px;
+    font-weight:600;
+}
+
+.feature-card p{
+    color:#7d4b2a;
+    font-size:16px;
+    line-height:1.45;
+}
+
 .floating-cart{
     position: fixed;
     bottom: 30px;
@@ -821,6 +866,25 @@ footer{
 
     .hero p{
         font-size:18px;
+    }
+
+    .service-features{
+        grid-template-columns:repeat(2,minmax(0,1fr));
+        gap:18px;
+        padding:44px 16px;
+    }
+
+    .feature-card{
+        min-height:200px;
+        padding:20px 10px 16px;
+    }
+
+    .feature-card h2{
+        font-size:19px;
+    }
+
+    .feature-card p{
+        font-size:16px;
     }
 
     .coffee-container{
