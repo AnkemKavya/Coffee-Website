@@ -108,12 +108,21 @@ function bindProduct(prods = []) {
     if (!container) return;
 
     if (prods.length > 0) {
+        const displayedNames = new Set(
+            [...container.querySelectorAll("h3")].map(cardTitle => cardTitle.textContent.trim().toLowerCase())
+        );
         let content = "";
         for (let i = 0; i < prods.length; i++) {
+                const productName = String(prods[i].name || "").trim();
+                const normalizedName = productName.toLowerCase();
+
+                if (!productName || displayedNames.has(normalizedName)) continue;
+
+                displayedNames.add(normalizedName);
                 const category = String(prods[i].category || "").toLowerCase();
                 content += ` <div class="coffee-card" data-category="${category}">
                 <img src="${prods[i].url}" alt="${prods[i].name}">
-                <h3>${prods[i].name}</h3>
+                <h3>${productName}</h3>
                 <p>${prods[i].description}</p>
                 <p>₹${prods[i].price}</p>
                 <button class="add-cart" type="button">Add to Cart</button>
