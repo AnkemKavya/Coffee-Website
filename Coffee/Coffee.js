@@ -179,9 +179,12 @@ document.addEventListener("DOMContentLoaded", () => {
     // Smooth Scrolling
     document.querySelectorAll('a[href^="#"]').forEach(link => {
         link.addEventListener("click", function (e) {
+            const href = this.getAttribute("href");
+            if (href === "#") return;
+
             e.preventDefault();
 
-            const target = document.querySelector(this.getAttribute("href"));
+            const target = document.querySelector(href);
 
             if (target) {
                 target.scrollIntoView({
@@ -220,6 +223,67 @@ document.addEventListener("DOMContentLoaded", () => {
     const sidebar = document.getElementById("cartSidebar");
     const overlay = document.getElementById("overlay");
     const floatingCart = document.querySelector(".floating-cart");
+    const checkoutButton = document.getElementById("checkoutButton");
+    const checkoutPanel = document.getElementById("checkoutPanel");
+    const orderConfirmationOverlay = document.getElementById("orderConfirmationOverlay");
+    const checkoutForm = document.getElementById("checkoutForm");
+    const cartContent = document.getElementById("cartContent");
+    const cartFooter = document.querySelector(".cart-footer");
+
+    const showCartView = () => {
+        cartContent.hidden = false;
+        cartFooter.hidden = false;
+        checkoutPanel.hidden = true;
+    };
+
+    const showCheckoutView = () => {
+        const subtotal = cartItems.reduce((sum, item) => sum + Number(item.price) * (item.quantity || 1), 0);
+        document.getElementById("checkoutSubtotal").textContent = `₹${subtotal}`;
+        document.getElementById("checkoutDelivery").textContent = `₹${DELIVERY_FEE}`;
+        document.getElementById("checkoutTotal").textContent = `₹${subtotal + DELIVERY_FEE}`;
+        cartContent.hidden = true;
+        cartFooter.hidden = true;
+        checkoutPanel.hidden = false;
+    };
+
+    const showOrderSuccess = () => {
+        const orderId = `CF${Math.floor(10000 + Math.random() * 90000)}`;
+        document.getElementById("orderNumber").textContent = `#${orderId}`;
+        cartItems = [];
+        updateCartDisplay();
+        closeCartSidebar();
+        orderConfirmationOverlay.hidden = false;
+    };
+
+    if (checkoutButton) {
+        checkoutButton.addEventListener("click", showCheckoutView);
+    }
+
+    document.getElementById("backToCart")?.addEventListener("click", showCartView);
+
+    if (checkoutForm) {
+        checkoutForm.addEventListener("submit", event => {
+            event.preventDefault();
+
+            if (cartItems.length === 0) {
+                showCartView();
+                return;
+            }
+
+            showOrderSuccess();
+            checkoutForm.reset();
+        });
+    }
+
+    const closeOrderSuccess = () => {
+        orderConfirmationOverlay.hidden = true;
+    };
+
+    document.getElementById("closeSuccess")?.addEventListener("click", closeOrderSuccess);
+    document.getElementById("continueShopping")?.addEventListener("click", closeOrderSuccess);
+    orderConfirmationOverlay?.addEventListener("click", event => {
+        if (event.target === orderConfirmationOverlay) closeOrderSuccess();
+    });
 
     const openCartSidebar = () => {
         if (sidebar) sidebar.classList.add("open");
@@ -231,6 +295,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (sidebar) sidebar.classList.remove("open");
         if (overlay) overlay.classList.remove("show");
         if (floatingCart) floatingCart.classList.remove("hidden");
+        showCartView();
     };
 
     // Open Sidebar
